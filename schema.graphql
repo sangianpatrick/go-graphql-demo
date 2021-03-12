@@ -1,0 +1,25 @@
+schema {
+  query: Query
+}
+
+type User {
+  id: Int!
+  name: String
+  email: String
+  createdAt: DateTime!
+}
+
+type Article {
+  id: Int!
+  title: String
+  subtitle: String
+  content: String
+  createdAt: DateTime!
+  userId: Int!
+}
+
+type Query {
+  userDetail (id: Int!): User
+  articleDetail (id: Int!): Article
+  bunchOfArticlesByUserId (userId: Int!): [Article!]!
+}
