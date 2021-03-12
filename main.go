@@ -30,14 +30,14 @@ func main() {
 	userRepository := repository.NewUserRepository(logger, db)
 	userUsecase := usecase.NewUserUsecase(logger, userRepository)
 	userResolver := resolver.NewUserResolver(userUsecase)
-	userType := object.NewUserType()
 	userFieldConfigArgument := object.NewUserFieldConfigArgument()
+	userType := object.NewUserType()
 
 	// article domain
+	articleResolver := resolver.NewArticleResolver()
+	articleFieldConfigArgument := object.NewArticleFieldConfigArgument()
 	articleType := object.NewArticleType()
 	articleListType := graphql.NewList(articleType)
-	articleFieldConfigArgument := object.NewArticleFieldConfigArgument()
-	articleResolver := resolver.NewArticleResolver()
 
 	queryType := object.NewQueryType()
 	queryType.AddFieldConfig("userDetail", &graphql.Field{
